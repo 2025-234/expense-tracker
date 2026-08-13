@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestionnaire de Dépenses</title>
+    <!-- CSS relié à Flask -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- Graphiques Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>📊 Mon Gestionnaire de Dépenses</h1>
+
+        <!-- Formulaire d'ajout -->
+        <form id="expense-form">
+            <input type="text" id="description" placeholder="Description (ex: Courses)" required>
+            <input type="number" id="montant" placeholder="Montant (RON)" step="0.01" required>
+            <select id="categorie">
+                <option value="Alimentation">Alimentation</option>
+                <option value="Logement">Logement</option>
+                <option value="Transports">Transports</option>
+                <option value="Loisirs">Loisirs</option>
+                <option value="Autre">Autre</option>
+            </select>
+            <button type="submit">Ajouter</button>
+        </form>
+
+        <!-- Résumé et Actions -->
+        <div class="dashboard">
+            <div class="total-box">
+                <h2>Total : <span id="total-amount">0</span> RON</h2>
+            </div>
+            <button id="export-btn" class="btn-export">📥 Exporter en CSV</button>
+        </div>
+
+        <!-- Graphique -->
+        <div class="chart-container">
+            <canvas id="expenseChart"></canvas>
+        </div>
+
+        <!-- Liste des dépenses -->
+        <h2>Liste des dépenses</h2>
+        <ul id="expense-list"></ul>
+    </div>
+
+    <!-- JavaScript relié à Flask -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
