@@ -2,7 +2,7 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f4f7f6;
     margin: 0;
-    padding: 40px;
+    padding: 20px;
     display: flex;
     justify-content: center;
 }
@@ -20,8 +20,10 @@ h1, h2 {
     color: #333;
 }
 
+/* Formulaire adapté (se met en colonne sur petit écran) */
 form {
     display: flex;
+    flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 20px;
 }
@@ -30,6 +32,8 @@ input, select, button {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 6px;
+    font-size: 14px;
+    flex: 1;
 }
 
 button {
@@ -38,16 +42,87 @@ button {
     border: none;
     cursor: pointer;
     font-weight: bold;
+    flex: none;
 }
 
 button:hover {
     background-color: #219150;
 }
 
+/* Section Résumé & Dashboard */
+.dashboard {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
 .total-box {
     background-color: #eef9f1;
     padding: 15px;
     border-radius: 8px;
-    margin-bottom: 15px;
     border-left: 5px solid #27ae60;
+    flex: 1;
+}
+
+.total-box h2 {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+/* Bouton Exporter */
+.btn-export {
+    background-color: #2980b9;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: none;
+    margin-left: 10px;
+}
+
+.btn-export:hover {
+    background-color: #1f618d;
+}
+
+/* Graphique */
+.chart-container {
+    position: relative;
+    max-width: 350px;
+    margin: 20px auto;
+}
+
+/* Liste des dépenses */
+#expense-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 15px;
+}
+
+#expense-list li {
+    background: #f9f9f9;
+    padding: 12px 15px;
+    margin-bottom: 8px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-left: 4px solid #3498db;
+}
+
+/* Bouton de suppression rouge X */
+.delete-btn {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.delete-btn:hover {
+    background-color: #c0392b;
 }
