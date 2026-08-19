@@ -52,7 +52,10 @@ function afficherDepenses() {
 
 // 6. Mise à jour du graphique (Chart.js)
 function mettreAJourGraphique() {
-    const ctx = document.getElementById('expenseChart').getContext('2d');
+    const chartElement = document.getElementById('expenseChart');
+    if (!chartElement) return;
+
+    const ctx = chartElement.getContext('2d');
 
     // Regroupement des montants par catégorie
     const categoriesTotaux = {};
@@ -104,13 +107,20 @@ function mettreAJourPage() {
 }
 
 // Événements
-form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    ajouterDepense(descriptionInput.value, montantInput.value, categorieSelect.value);
-    form.reset();
-});
+if (form) {
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        ajouterDepense(descriptionInput.value, montantInput.value, categorieSelect.value);
+        form.reset();
+    });
+}
 
-exportBtn.addEventListener('click', exporterCSV);
+if (exportBtn) {
+    exportBtn.addEventListener('click', exporterCSV);
+}
+
+// Rendre la fonction de suppression globale pour le clic HTML
+window.supprimerDepense = supprimerDepense;
 
 // Initialisation au chargement de la page
 mettreAJourPage();
