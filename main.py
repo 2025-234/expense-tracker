@@ -1,5 +1,6 @@
 from flask import render_template, g, request
 import sqlite3
+app = Flask(__name__)
 
 DATABASE = 'database.db' # Remplacez par le nom de votre base de données si besoin
 
@@ -14,6 +15,13 @@ def close_connection(exception):
     db = getattr(g, '_database', None)
     if db is not None:
         db.close()
+@app.route('/')
+def index():
+    # ...
+    return render_template('index.html', count=count)
+
+if __name__ == '__main__':
+    app.run(debug=True)
 
 # Initialiser la table des statistiques au démarrage
 def init_counter():
